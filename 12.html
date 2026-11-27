@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color:#F4F1EA;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0D5C75;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #0D5C75;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #0D5C75;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #0D5C75;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #F4F1EA;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #ffffff;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #F4F1EA;
+      color: #FFFFFF;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #d4af37;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #0D5C75;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="logo.png" alt="Islamic Center.or.id" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">Islamic Center.or.id</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.HTML" class="nav-link">Beranda</a></li>
+      
+      <!-- Dropdown Kategori --!>
+
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">Keutamaan Shalat</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">sifat sholat nabi</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">tata cara sholat</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 doa iftitah</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">Dzikir setelah sholat</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>12 Bacaan Doa Iftitah</h1>
+   <center><img src="doacowo.jpg" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+      <strong><p> Doa Iftitah Pembersihan Dosa (HR. Bukhari no. 744 & Muslim no. 598)Arab:</p></strong> 
+	   اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ، اللَّهُمَّ نَقِّنِي مِنْ خَطَايَايَ كَمَا يُنَقَّى الثَّوْبُ الْأَبْيَضُ مِنَ الدَّنَسِ، اللَّهُمَّ اغْسِلْنِي مِنْ خَطَايَايَ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ   Latin: Allaahumma baa'id bainii wa baina khathaayaaya kamaa baa'adta bainal masyriqi wal maghrib. Allaahumma naqqinii min khathaayaaya kamaa yunaqqats tsaubul abyadhu minad danas. Allaahummagh-silnii min khathaayaaya bil maa-i wats tsalji wal barad.Makna ringkas: Memohon agar dijauhkan dari kesalahan sejauh timur dan barat, disucikan dari dosa seperti baju putih yang dibersihkan dari kotoran, dan dicuci dengan air, salju, serta embun/air es.
+   <strong><p>Doa Iftitah Ringkas Riwayat Umar bin Khattab (HR. Abu Daud no. 775, Tirmidzi no. 242, An-Nasa'i no. 899, Ibnu Majah no. 806)</p></strong>
+Arab: 
+سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ
+
+Latin: Subhaanakallaahumma wa bihamdika, wa tabaarakasmuka, wa ta'aalaa jadduka, wa laa ilaaha ghairuk.
+
+Makna ringkas: Menyucikan dan memuji Allah, mengagungkan keberkahan nama-Nya dan ketinggian kedudukan/keagungan-Nya, serta menegaskan tiada ilah yang berhak disembah selain Dia.
+	<p class="penjelasan-justify">
+   <strong> <p>Doa Iftitah Menghadapkan Wajah (HR. Muslim no. 771)</p></strong>
+Arab:
+ وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا وَمَا أَنَا مِنَ الْمُشْرِكِينَ، إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ، لَا شَرِيكَ لَهُ وَبِذَلِكَ أُمِرْتُ وَأَنَا مِنَ الْمُسْلِمِينَ
+
+Latin: Wajjahtu wajhiya lilladzii fatharas samaawaati wal ardha haniifan wa maa anaa minal musyrikiin. Inna shalaatii wa nusukii wa mahyaaya wa mamaatii lillaahi rabbil 'aalamiin. Laa syariika lahu wa bidzaalika umirtu wa anaa minal muslimiin.
+
+Makna ringkas: Menghadapkan wajah dengan lurus kepada Pencipta langit dan bumi, serta menyerahkan shalat, ibadah, hidup, dan mati hanya untuk Allah Rabb semesta alam.
+	<p class="penjelasan-justify">
+	<strong><p>Doa Iftitah Subhaanakallaahumma + Tambahan Tahlil & Takbir (HR. Abu Daud no. 776 / hasan menurut Syaikh Al-Albani)</p></strong>
+Arab:
+ سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ، لَا إِلَهَ إِلَّا اللَّهُ (٣×)، اللَّهُ أَكْبَرُ كَبِيرًا (٣×)
+
+Latin: Subhaanakallaahumma wa bihamdika, wa tabaarakasmuka, wa ta'aalaa jadduka, wa laa ilaaha ghairuk. Laa ilaaha illallaah (3x). Allaahu akbar kabiiraa (3x).
+
+Makna ringkas: Gabungan pujian Subhaanakallaahumma... dengan pengulangan kalimat tauhid dan takbir agung.
+	<p class="penjelasan-justify">
+	<strong><p>Doa Iftitah Agung & Pujian Pagi-Petang (HR. Muslim no. 601)</p></strong>
+Arab: 
+اللَّهُ أَكْبَرُ كَبِيرًا، وَالْحَمْدُ لِلَّهِ كَثِيرًا، وَسُبْحَانَ اللَّهِ بُكْرَةً وَأَصِيلًا
+
+Latin: Allaahu akbar kabiiraa, walhamdulillaahi katsiiraa, wa subhaanallaahi bukratan wa ashiilaa.
+
+Makna ringkas: Mengagungkan Allah dengan kebesaran yang agung, memuji-Nya dengan pujian yang banyak, dan menyucikan-Nya di waktu pagi serta petang.
+	<p class="penjelasan-justify">
+	<strong><p>Doa Iftitah Pujian yang Banyak & Penuh Berkah (HR. Muslim no. 600)</p></strong>
+Arab: 
+الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ
+
+Latin: Alhamdulillaahi hamdan katsiiran thayyiban mubaarakan fiih.
+
+Makna ringkas: Segala puji bagi Allah dengan pujian yang banyak, baik, dan penuh keberkahan di dalamnya.
+	<p class="penjelasan-justify">
+	<strong><p>Doa Iftitah Shalat Malam Rabb Jibril, Mikail, dan Israfil (HR. Muslim no. 770)</p></strong>
+Arab: 
+اللَّهُمَّ رَبَّ جِبْرَائِيلَ وَمِيكَائِيلَ وَإِسْرَافِيلَ، فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ، عَالِمَ الْغَيْبِ وَالشَّهَادَةِ، أَنْتَ تَحْكُمُ بَيْنَ عِبَادِكَ فِيمَا كَانُوا فِيهِ يَخْتَلِفُونَ، اهْدِنِي لِمَا اخْتُلِفَ فِيهِ مِنَ الْحَقِّ بِإِذْنِكَ، إِنَّكَ تَهْدِي مَنْ تَشَاءُ إِلَى صِرَاطٍ مُسْتَقِيمٍ
+
+Latin: Allaahumma rabba Jibriila wa Miikaa-iila wa Israafiil, faathiras samaawaati wal ardhi, 'aalimal ghaibi wasy syahaadah, anta tahkumu baina 'ibaadika fiimaa kaanuu fiihi yakhtalifuun. Ihdinii limakhtulifa fiihi minal haqqi bi-idznika, innaka tahdii man tasyaa-u ilaa shiraathim mustaqiim.
+
+Makna ringkas: Memohon kepada Rabbnya Jibril, Mikail, dan Israfil agar diberi petunjuk menuju kebenaran dalam perkara yang diperselisihkan menuju jalan yang lurus.
+	<p class="penjelasan-justify">
+	<strong><p>Doa Iftitah Shalat Malam Allaahumma Lakal Hamdu (HR. Bukhari no. 1120 & Muslim no. 769)</p></strong>
+Arab:
+ اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ قَيِّمُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ لَكَ مُلْكُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ...
+
+Latin: Allaahumma lakal hamdu anta qayyimus samaawaati wal ardhi wa man fiihinna, wa lakal hamdu lakal mulkus samaawaati wal ardhi wa man fiihinna, wa lakal hamdu nuurus samaawaati wal ardhi...
+
+Makna ringkas: Rangkaian pujian kepada Allah sebagai Penegak, Pemilik kerajaan, dan Cahaya langit dan bumi beserta seluruh isinya (lazim dibaca pada shalat malam).
+	<p class="penjelasan-justify">
+	<strong><p>Doa Iftitah dengan Hitungan 10x (HR. Abu Daud no. 765)</p></strong>
+Arab: 
+اللَّهُ أَكْبَرُ (١٠×)، الْحَمْدُ لِلَّهِ (١٠×)، سُبْحَانَ اللَّهِ (١٠×)، لَا إِلَهَ إِلَّا اللَّهُ (١٠×)، أَسْتَغْفِرُ اللَّهَ (١٠×)، اللَّهُمَّ اغْفِرْ لِي وَاهْدِنِي وَارْزُقْنِي وَعَافِنِي (١٠×)، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ ضِيقِ الْمَقَامِ يَوْمَ الْقِيَامَةِ (١٠×)
+
+Latin: Allaahu akbar (10x), Alhamdulillaah (10x), Subhaanallaah (10x), Laa ilaaha illallaah (10x), Astaghfirullaah (10x), Allaahummagh-fir lii wahdinii warzuqnii wa 'aafinii (10x), Allaahumma innii a'uudzu bika min dhiiqil maqaami yaumal qiyaamah (10x).
+
+Makna ringkas: Rangkaian dzikir dan doa permohonan ampun, petunjuk, rezeki, kesehatan, serta perlindungan dari kesempitan kedudukan pada hari kiamat.
+	<p class="penjelasan-justify">
+	<strong><p>Doa Iftitah Keagungan Kerajaan & Kekuasaan (HR. Ath-Thayalisi & Al-Baihaqi)</p></strong>
+Arab:
+ اللَّهُ أَكْبَرُ ذَا الْمَلَكُوتِ وَالْجَبَرُوتِ وَالْكِبْرِيَاءِ وَالْعَظَمَةِ
+
+Latin: Allaahu akbar dzal malakuuti wal jabaruuti wal kibriyaa-i wal 'azhamah.
+
+Makna ringkas: Mengagungkan Allah sebagai Pemilik kerajaan, kekuasaan/keperkasaan, kebesaran, dan keagungan.
+	<p class="penjelasan-justify">
+	<strong><p>Variasi Wajjahtu Wajhiya Ringkas (Riwayat Sunan / An-Nasa'i)</p></strong>
+Arab: 
+وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا وَمَا أَنَا مِنَ الْمُشْرِكِينَ
+
+Latin: Wajjahtu wajhiya lilladzii fatharas samaawaati wal ardha haniifan wa maa anaa minal musyrikiin.
+
+Makna ringkas: Bentuk ringkas ikrar menghadapkan wajah secara lurus kepada Pencipta langit dan bumi.
+	<p class="penjelasan-justify">
+	<strong><p>Doa Iftitah Allaahumma Antal Malik (HR. An-Nasa'i)</p></strong>
+Arab:
+ اللَّهُمَّ أَنْتَ الْمَلِكُ لَا إِلَهَ إِلَّا أَنْتَ، سُبْحَانَكَ وَبِحَمْدِكَ
+
+Latin: Allaahumma antal maliku laa ilaaha illaa anta, subhaanaka wa bihamdika.
+
+Makna ringkas: Penegasan bahwa Allah adalah Raja/Penguasa, tiada ilah yang berhak disembah selain Dia, serta menyucikan dan memuji-Nya.
+	
+  </main>
+
+</body>
+</html>

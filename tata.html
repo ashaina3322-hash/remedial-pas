@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color:#F4F1EA;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0D5C75;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #0D5C75;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #0D5C75;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #0D5C75;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #F4F1EA;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #ffffff;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #F4F1EA;
+      color: #FFFFFF;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #d4af37;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #0D5C75;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="logo.png" alt="Islamic Center.or.id" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">Islamic Center.or.id</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.HTML" class="nav-link">Beranda</a></li>
+      
+      <!-- Dropdown Kategori --!>
+
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">Keutamaan Shalat</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">sifat sholat nabi</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">tata cara sholat</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 doa iftitah</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">Dzikir setelah sholat</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>Tata Cara Shalat</h1>
+   <center><img src="shalat3.jpg" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+   <strong> <p>Niat dan Menghadap Kiblat</p></strong>
+
+Menghadap kiblat dengan seluruh badan dan menghadirkan niat di dalam hati sesuai shalat yang dikerjakan (tidak disyaratkan dilafalkan), serta berdiri tegak bagi yang mampu pada shalat wajib.
+	 <p class="penjelasan-justify">
+	<strong><p>Takbiratul Ihram</p></strong>
+
+Mengangkat kedua tangan sejajar bahu atau daun telinga sambil membaca takbir:
+
+Arab: اللَّهُ أَكْبَرُ
+
+Latin: Allaahu akbar
+	 <p class="penjelasan-justify">
+	<strong><p>Bersedekap dan Membaca Doa Iftitah</p></strong>
+
+Meletakkan tangan kanan di atas punggung tangan atau lengan kiri di atas dada/area atas pusar, lalu membaca salah satu doa iftitah secara lirih (sirr)—misalnya:
+
+Arab: سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ
+
+Latin: Subhaanakallaahumma wa bihamdika, wa tabaarakasmuka, wa ta'aalaa jadduka, wa laa ilaaha ghairuk.
+	 <p class="penjelasan-justify">
+	<strong><p>Membaca Ta'awudz, Al-Fatihah, dan Surat/Ayat Al-Qur'an</p></strong>
+
+Membaca ta'awudz secara lirih:
+
+Arab: أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ
+
+Latin: A'uudzu billaahi minasy syaithaanir rajiim
+
+Membaca Surat Al-Fatihah secara tartil, mengucapkan Aamiin, lalu membaca ayat atau surat Al-Qur'an (pada rakaat pertama dan kedua).
+	 <p class="penjelasan-justify">
+	<strong><p>Rukuk dengan Tuma'ninah</p></strong>
+
+Mengangkat tangan sambil bertakbir, lalu membungkuk dengan punggung rata sejajar leher, memegang lutut dengan jari renggang, menjaga tuma'ninah (tenang sejenak), dan membaca dzikir rukuk (misalnya 3x):
+
+Arab: سُبْحَانَ رَبِّيَ الْعَظِيمِ
+
+Latin: Subhaana rabbiyal 'azhiim
+	 <p class="penjelasan-justify">
+	<strong><p>I'tidal dengan Tuma'ninah</p></strong>
+
+Bangkit berdiri tegak sambil mengangkat tangan dan membaca:
+
+Arab: سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ
+
+Latin: Sami'allaahu liman hamidah
+
+Setelah berdiri tegak dan tenang (tuma'ninah), membaca:
+
+Arab: رَبَّنَا وَلَكَ الْحَمْدُ
+
+Latin: Rabbanaa wa lakal hamdu
+	 <p class="penjelasan-justify">
+	<strong><p>Sujud Pertama dengan Tuma'ninah</p></strong>
+
+Bertakbir tanpa mengangkat tangan lalu turun sujud bertumpu pada tujuh anggota tubuh (dahi bersama hidung, dua telapak tangan, dua lutut, dan ujung jari kaki) dengan siku terangkat, menjaga tuma'ninah, lalu membaca dzikir sujud (misalnya 3x):
+
+Arab: سُبْحَانَ رَبِّيَ الْأَعْلَى
+
+Latin: Subhaana rabbiyal a'laa
+	 <p class="penjelasan-justify">
+	<strong><p>Duduk di Antara Dua Sujud dengan Tuma'ninah</p></strong>
+
+Bertakbir lalu bangkit duduk iftirasy (duduk di atas kaki kiri, kaki kanan ditegakkan) dengan tenang (tuma'ninah), lalu membaca:
+
+Arab: رَبِّ اغْفِرْ لِي، وَارْحَمْنِي، وَاجْبُرْنِي، وَارْفَعْنِي، وَارْزُقْنِي، وَاهْدِنِي، وَعَافِنِي، وَاعْفُ عَنِّي
+
+Latin: Rabbigh-fir lii, warhamnii, wajburnii, warfa'nii, warzuqnii, wahdinii, wa 'aafinii, wa'fu 'annii
+	 <p class="penjelasan-justify">
+	<strong><p>Sujud Kedua dan Bangkit ke Rakaat Berikutnya</p></strong>
+
+Mengerjakan sujud kedua dengan cara dan bacaan yang sama seperti sujud pertama, lalu bertakbir dan bangkit berdiri untuk melanjutkan rakaat berikutnya (boleh duduk istirahat sejenak sebelum berdiri).
+	 <p class="penjelasan-justify">
+	<strong><p>Tasyahud Awal dan Tasyahud Akhir</p></strong>
+
+Duduk iftirasy pada tasyahud awal (untuk shalat 3 atau 4 rakaat) dan duduk tawarruk pada tasyahud akhir, dengan jari telunjuk kanan berisyarat saat berdoa, lalu membaca tasyahud:
+
+Arab: التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ
+
+Latin: Attahiyyaatu lillaahi wash-shalawaatu wath-thayyibaat, assalaamu 'alaika ayyuhan-nabiyyu wa rahmatullaahi wa barakaatuh, assalaamu 'alainaa wa 'alaa 'ibaadillaahish-shaalihiin, asyhadu an laa ilaaha illallaah wa asyhadu anna muhammadan 'abduhu wa rasuuluh.
+
+Dilanjutkan membaca shalawat kepada Nabi ﷺ (pada tasyahud akhir juga dianjurkan memohon perlindungan dari empat perkara sebelum salam).
+   <strong> <p>Salam</p></strong>
+
+Menutup shalat dalam keadaan duduk sambil menoleh ke kanan dan ke kiri dengan membaca:
+
+Arab: السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ
+
+Latin: Assalaamu 'alaikum wa rahmatullaah
+	
+  </main>
+
+</body>
+</html>

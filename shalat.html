@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color:#F4F1EA;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0D5C75;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #0D5C75;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #0D5C75;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #0D5C75;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #F4F1EA;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #ffffff;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #F4F1EA;
+      color: #FFFFFF;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #d4af37;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #0D5C75;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="logo.png" alt="Islamic Center.or.id" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">Islamic Center.or.id</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.HTML" class="nav-link">Beranda</a></li>
+      
+      <!-- Dropdown Kategori --!>
+
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">Keutamaan Shalat</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">sifat sholat nabi</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">tata cara sholat</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 doa iftitah</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">Dzikir setelah sholat</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>Apa Itu Shalat? </h1>
+   <center><img src="shalat1.jpg" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+<strong><p>1. Apa Itu Shalat? (Pengertian & Kedudukannya)</p></strong>
+Secara bahasa: Shalat bermakna doa atau permohonan kebaikan.
+
+Secara istilah syar'i: Rangkaian ucapan dan perbuatan khusus yang diawali dengan takbiratul ihram dan diakhiri dengan salam, dikerjakan dengan syarat dan rukun tertentu untuk beribadah kepada Allah Ta'ala.
+
+Kedudukan dalam Islam: Shalat merupakan rukun Islam kedua setelah dua kalimat syahadat dan tiang agama. Kewajibannya ditetapkan langsung saat peristiwa Isra' Mi'raj sebagai tanda kemuliaan dan urgensinya.
+
+<strong><p>2. Syarat Wajib dan Syarat Sah Shalat</p></strong>
+Syarat wajib shalat (hal yang membuat seseorang terkena kewajiban shalat):
+
+Islam: Orang kafir asli tidak wajib menunaikan shalat selama belum masuk Islam (meski tetap dimintai pertanggungjawaban di akhirat).
+
+Berakal: Orang gila atau hilang akal tidak terkena kewajiban shalat.
+
+Baligh: Anak kecil belum terkena kewajiban shalat (namun orang tua diperintahkan melatih dan membiasakannya sejak usia 7 tahun, serta tegas mendidiknya pada usia 10 tahun).
+
+Suci dari haid dan nifas (khusus wanita): Wanita yang sedang haid atau nifas tidak wajib shalat dan tidak sah jika mengerjakannya, serta tidak wajib mengqadha shalat yang ditinggalkan selama masa tersebut.
+
+Telah sampai dakwah (menurut sebagian rincian ulama dalam pembahasan taklif).
+
+Syarat sah shalat (hal yang harus terpenuhi agar shalat dinilai sah sebelum dan selama dikerjakan):
+
+Masuk waktu shalat: Tidak sah mengerjakan shalat sebelum waktunya masuk.
+
+Suci dari hadats kecil dan hadats besar: Berwudhu bagi yang berhadats kecil, dan mandi wajib bagi yang berhadats besar.
+
+Suci badan, pakaian, dan tempat shalat dari najis.
+
+Menutup aurat: Aurat laki-laki minimal antara pusar hingga lutut; aurat wanita merdeka dalam shalat adalah seluruh tubuh kecuali wajah dan telapak tangan (menurut mayoritas ulama).
+
+Menghadap kiblat (ke arah Ka'bah, kecuali dalam kondisi uzur tertentu seperti safar/perang sesuai ketentuannya).
+
+<strong><p>3. Perkara yang Membatalkan Shalat</p></strong>
+Secara umum, shalat batal jika terjadi hal-hal berikut:
+
+Berhadats (keluar angin/kentut, buang air kecil/besar, tidur pulas yang menghilangkan kesadaran, atau hilangnya akal).
+
+Terkumpul atau terkena najis yang tidak dimaafkan pada badan, pakaian, atau tempat shalat.
+
+Terbuka auratnya secara sengaja atau tidak disengaja lalu tidak segera ditutup saat diingat/disadari.
+
+Berbicara dengan sengaja menggunakan ucapan manusia di luar bacaan dan dzikir shalat.
+
+Banyak bergerak berturut-turut di luar gerakan shalat tanpa kebutuhan mendesak.
+
+Makan atau minum dengan sengaja saat shalat berlangsung.
+
+Meninggalkan salah satu rukun atau syarat sah shalat tanpa uzur yang dibenarkan syariat.
+
+<strong><p>4. Hal-Hal yang Disunnahkan Terkait Waktu & Pelaksanaan Shalat</p></strong>
+Menjaga waktu shalat dan bersegera menunaikannya saat waktunya tiba.
+
+Shalat berjamaah di masjid bagi laki-laki, karena memiliki keutamaan berlipat dibandingkan shalat sendirian.
+
+Khusyuk dan menghadirkan hati, yaitu memahami bacaan shalat, merenungkan makna gerakan, serta menjauhkan pikiran dari gangguan duniawi.
+
+Melakukan sujud sahwi bila lupa melakukan bagian tertentu dalam shalat (seperti lupa tasyahud awal atau ragu jumlah rakaat) sesuai ketentuan fikih.
+ 
+ </main>
+
+</body>
+</html>
